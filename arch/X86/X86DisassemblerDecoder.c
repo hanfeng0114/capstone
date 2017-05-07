@@ -1246,11 +1246,19 @@ static int getID(struct InternalInstruction *insn)
 			attrMask |= ATTR_OPSIZE;
 		} else if (isPrefixAtLocation(insn, 0x67, insn->necessaryPrefixLocation)) {
 			attrMask |= ATTR_ADSIZE;
+		}
+
+/*
+		if (insn->mode != MODE_16BIT && isPrefixAtLocation(insn, 0x66, insn->necessaryPrefixLocation)) {
+			attrMask |= ATTR_OPSIZE;
+		} else if (isPrefixAtLocation(insn, 0x67, insn->necessaryPrefixLocation)) {
+			attrMask |= ATTR_ADSIZE;
 		} else if (insn->mode != MODE_16BIT && isPrefixAtLocation(insn, 0xf3, insn->necessaryPrefixLocation)) {
 			attrMask |= ATTR_XS;
 		} else if (insn->mode != MODE_16BIT && isPrefixAtLocation(insn, 0xf2, insn->necessaryPrefixLocation)) {
 			attrMask |= ATTR_XD;
 		}
+*/
 	}
 
 	if (insn->rexPrefix & 0x08)
